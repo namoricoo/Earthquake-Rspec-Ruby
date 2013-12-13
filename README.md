@@ -43,3 +43,7 @@
 			}
 
 8) Write test for Earthquake class			
+
+9) Write test for format earthquake_location
+
+10) Pass test for format earthquake location

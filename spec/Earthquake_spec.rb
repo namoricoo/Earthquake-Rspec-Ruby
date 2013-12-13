@@ -4,7 +4,7 @@ require_relative 'spec_helper.rb'
 describe Earthquake do
   it 'transforms input into hash {latitude: number,longitude: number}' do
     # [longitude,latitude,depth]
-    input = [127.4955, 5.1454, 80.11]
+    input_array = [127.4955, 5.1454, 80.11]
     output = {latitude: 5.1454,longitude: 127.4955}
     Earthquake.new.format_location_hash(input_array).should == output
   end
