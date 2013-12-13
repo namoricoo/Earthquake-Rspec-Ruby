@@ -13,4 +13,11 @@ describe GeoJsonHhelper do
     # file_path = "#{first_half}#{second_half}"
     # GeoJsonHhelper.new.get_remote_json_file(file_path).should_not be_nil
   # end
+
+  it 'extracts the geo json features from the rest of the document ' do
+    file_name = 'sample_earthquake.geojson'
+    geo = GeoJsonHhelper.new
+    result = geo.get_local_json_file(file_name)
+    geo.get_array_earthquake_hash(result).should_not be_nil
+  end  
 end
