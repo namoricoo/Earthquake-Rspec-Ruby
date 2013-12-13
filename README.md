@@ -42,4 +42,4 @@
 				type: String
 			}
 
-			
+8) Write test for Earthquake class			
