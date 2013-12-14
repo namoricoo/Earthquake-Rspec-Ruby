@@ -54,9 +54,9 @@ class GeoJsonHhelper
       earthquake = Earthquake.new
        if (index == 2) || (index == 1)
          set_earthquake_feature(value, earthquake)
-         @earthquake_array_of_hashes << earthquake.earthquake_hash         
+         @earthquake_array_of_hashes << earthquake.earthquake_hash
        end
-    end    
+    end
     @earthquake_array_of_hashes
   end
 

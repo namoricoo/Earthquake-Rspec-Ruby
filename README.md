@@ -49,3 +49,5 @@
 10) Pass test for format earthquake location
 
 11) set earthquake properties and geometry
+
+12)zero rubocop error
