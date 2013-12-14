@@ -5,8 +5,10 @@ require 'uri'
 require 'pp'
 # Load Geo Json file into a hash
 class GeoJsonHhelper
+  attr_reader :earthquake_array_of_hashes
   def initialize
     @geo_json_hash = {}
+    @earthquake_array_of_hashes = []
   end
 
   def get_local_json_file(file_name)
@@ -45,5 +47,39 @@ class GeoJsonHhelper
        (earthquake_array_of_hashes = value) if key == 'features'
      end
      earthquake_array_of_hashes
+  end
+
+  def set_earthquake_features(geo_features_hash)
+    geo_features_hash.each_with_index do |value, index|
+      earthquake = Earthquake.new
+       if (index == 2) || (index == 1)
+         set_earthquake_feature(value, earthquake)
+         @earthquake_array_of_hashes << earthquake.earthquake_hash         
+       end
+    end    
+    @earthquake_array_of_hashes
+  end
+
+  def set_earthquake_feature(earthquake_feature_hash, earthquake)
+    earthquake_feature_hash.each do |key, value|
+      if key == 'geometry'
+        set_earthquake_geometry(value, earthquake)
+      elsif  key == 'properties'
+        set_earthquake_properties(value, earthquake)
+      end
+    end
+  end
+
+  def set_earthquake_geometry(geometry_hash, earthquake)
+    geometry_hash.each do |key, value|
+      earthquake.set_coordinates(value) if key == 'coordinates'
+    end
+  end
+
+  def set_earthquake_properties(properties_hash, earthquake)
+    title_hash = earthquake.title_hash
+    properties_hash.each do |key, value|
+      earthquake.set_field(title_hash[key], value) if title_hash[key]
+    end
   end
 end

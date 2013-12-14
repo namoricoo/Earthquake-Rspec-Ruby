@@ -47,3 +47,5 @@
 9) Write test for format earthquake_location
 
 10) Pass test for format earthquake location
+
+11) set earthquake properties and geometry

@@ -5,7 +5,9 @@ describe Earthquake do
   it 'transforms input into hash {latitude: number,longitude: number}' do
     # [longitude,latitude,depth]
     input_array = [127.4955, 5.1454, 80.11]
-    output = {latitude: 5.1454,longitude: 127.4955}
-    Earthquake.new.format_location_hash(input_array).should == output
+    output_hash = { latitude: 5.1454, longitude: 127.4955 }
+    earthquake = Earthquake.new
+    earthquake.set_coordinates(input_array)
+    earthquake.get_location_hash.should == output_hash
   end
 end
