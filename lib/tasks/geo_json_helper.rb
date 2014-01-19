@@ -79,7 +79,12 @@ class GeoJsonHhelper
   def set_earthquake_properties(properties_hash, earthquake)
     title_hash = earthquake.title_hash
     properties_hash.each do |key, value|
-      earthquake.set_field(title_hash[key], value) if title_hash[key]
+      if title_hash[key] == 'felt'
+        puts "I see felt= #{key}-#{value}"
+      else
+          earthquake.set_field(title_hash[key], value)
+      end
+       #if title_hash[key]
     end
   end
 end

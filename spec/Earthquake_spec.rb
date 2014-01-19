@@ -9,10 +9,5 @@ describe Earthquake do
     earthquake = Earthquake.new
     earthquake.set_coordinates(input_array)
     earthquake.get_location_hash.should == output_hash
-  end
-  it 'Get the from value in the slider' do
-    input = '0.2;7'
-    output = 0.2
-    earthquake.get_from_value(input).should == output
-  end
+  end  
 end
