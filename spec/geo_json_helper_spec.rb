@@ -1,4 +1,5 @@
 require_relative '../lib/tasks/geo_json_helper.rb'
+require_relative '../lib/tasks/earthquake.rb'
 require_relative 'spec_helper.rb'
 # Test Load File into an Array
 describe GeoJsonHhelper do
@@ -21,9 +22,11 @@ describe GeoJsonHhelper do
 
   it 'sets Earthquake properties' do
     file_name = 'sample_earthquake.geojson'
+    earthquake = Earthquake.new
     geo = GeoJsonHhelper.new
     result = geo.get_local_json_file(file_name)
     result_hash = geo.get_array_earthquake_hash(result)
+    #puts  result_hash 
     geo.set_earthquake_features(result_hash)
   end
 end
